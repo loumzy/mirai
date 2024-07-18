@@ -126,12 +126,11 @@ public abstract interface class net/mamoe/mirai/IMirai : net/mamoe/mirai/LowLeve
 	public abstract fun rejectNewFriendRequest (Lnet/mamoe/mirai/event/events/NewFriendRequestEvent;ZLkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public static synthetic fun rejectNewFriendRequest$default (Lnet/mamoe/mirai/IMirai;Lnet/mamoe/mirai/event/events/NewFriendRequestEvent;ZILjava/lang/Object;)V
 	public static synthetic fun rejectNewFriendRequest$default (Lnet/mamoe/mirai/IMirai;Lnet/mamoe/mirai/event/events/NewFriendRequestEvent;ZLkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+	public fun sendLike (Lnet/mamoe/mirai/Bot;JI)Lnet/mamoe/mirai/message/data/LikeResult;
+	public abstract fun sendLike (Lnet/mamoe/mirai/Bot;JILkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public fun sendNudge (Lnet/mamoe/mirai/Bot;Lnet/mamoe/mirai/message/action/Nudge;Lnet/mamoe/mirai/contact/Contact;)Z
 	public abstract fun sendNudge (Lnet/mamoe/mirai/Bot;Lnet/mamoe/mirai/message/action/Nudge;Lnet/mamoe/mirai/contact/Contact;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public abstract fun setFileCacheStrategy (Lnet/mamoe/mirai/utils/FileCacheStrategy;)V
-}
-
-public abstract interface annotation class net/mamoe/mirai/LowLevelApi : java/lang/annotation/Annotation {
 }
 
 public abstract interface class net/mamoe/mirai/LowLevelApiAccessor {
@@ -172,48 +171,10 @@ public final class net/mamoe/mirai/_MiraiInstance {
 	public static final fun set (Lnet/mamoe/mirai/IMirai;)V
 }
 
-public abstract class net/mamoe/mirai/auth/AuthReason {
-	public abstract fun getBot ()Lnet/mamoe/mirai/Bot;
-	public abstract fun getMessage ()Ljava/lang/String;
-}
-
-public final class net/mamoe/mirai/auth/AuthReason$FastLoginError : net/mamoe/mirai/auth/AuthReason {
-	public fun getBot ()Lnet/mamoe/mirai/Bot;
-	public fun getMessage ()Ljava/lang/String;
-}
-
-public final class net/mamoe/mirai/auth/AuthReason$ForceOffline : net/mamoe/mirai/auth/AuthReason {
-	public fun getBot ()Lnet/mamoe/mirai/Bot;
-	public fun getMessage ()Ljava/lang/String;
-}
-
-public final class net/mamoe/mirai/auth/AuthReason$FreshLogin : net/mamoe/mirai/auth/AuthReason {
-	public fun getBot ()Lnet/mamoe/mirai/Bot;
-	public fun getMessage ()Ljava/lang/String;
-}
-
-public final class net/mamoe/mirai/auth/AuthReason$MsfOffline : net/mamoe/mirai/auth/AuthReason {
-	public fun getBot ()Lnet/mamoe/mirai/Bot;
-	public fun getMessage ()Ljava/lang/String;
-}
-
-public final class net/mamoe/mirai/auth/AuthReason$NetworkError : net/mamoe/mirai/auth/AuthReason {
-	public fun getBot ()Lnet/mamoe/mirai/Bot;
-	public fun getMessage ()Ljava/lang/String;
-}
-
-public final class net/mamoe/mirai/auth/AuthReason$Unknown : net/mamoe/mirai/auth/AuthReason {
-	public fun getBot ()Lnet/mamoe/mirai/Bot;
-	public final fun getCause ()Ljava/lang/Throwable;
-	public fun getMessage ()Ljava/lang/String;
-}
-
 public abstract interface class net/mamoe/mirai/auth/BotAuthInfo {
 	public abstract fun getConfiguration ()Lnet/mamoe/mirai/utils/BotConfiguration;
 	public abstract fun getDeviceInfo ()Lnet/mamoe/mirai/utils/DeviceInfo;
 	public abstract fun getId ()J
-	public abstract fun getReason ()Lnet/mamoe/mirai/auth/AuthReason;
-	public abstract fun isFirstLogin ()Z
 }
 
 public abstract interface class net/mamoe/mirai/auth/BotAuthResult {
@@ -268,6 +229,8 @@ public abstract interface class net/mamoe/mirai/contact/AnonymousMember : net/ma
 	public fun nudge ()Lnet/mamoe/mirai/message/action/MemberNudge;
 	public synthetic fun nudge ()Lnet/mamoe/mirai/message/action/Nudge;
 	public synthetic fun nudge ()Lnet/mamoe/mirai/message/action/UserNudge;
+	public fun sendLike (ILkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun sendLike$suspendImpl (Lnet/mamoe/mirai/contact/AnonymousMember;ILkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public fun sendMessage (Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public fun sendMessage (Lnet/mamoe/mirai/message/data/Message;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public static synthetic fun sendMessage$suspendImpl (Lnet/mamoe/mirai/contact/AnonymousMember;Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
@@ -366,10 +329,6 @@ public abstract interface class net/mamoe/mirai/contact/Contact : kotlinx/corout
 	public static fun uploadImage (Lnet/mamoe/mirai/contact/Contact;Lnet/mamoe/mirai/utils/ExternalResource;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public fun uploadImage (Lnet/mamoe/mirai/utils/ExternalResource;)Lnet/mamoe/mirai/message/data/Image;
 	public abstract fun uploadImage (Lnet/mamoe/mirai/utils/ExternalResource;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
-	public fun uploadShortVideo (Lnet/mamoe/mirai/utils/ExternalResource;Lnet/mamoe/mirai/utils/ExternalResource;Ljava/lang/String;)Lnet/mamoe/mirai/message/data/ShortVideo;
-	public abstract fun uploadShortVideo (Lnet/mamoe/mirai/utils/ExternalResource;Lnet/mamoe/mirai/utils/ExternalResource;Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
-	public static synthetic fun uploadShortVideo$default (Lnet/mamoe/mirai/contact/Contact;Lnet/mamoe/mirai/utils/ExternalResource;Lnet/mamoe/mirai/utils/ExternalResource;Ljava/lang/String;ILjava/lang/Object;)Lnet/mamoe/mirai/message/data/ShortVideo;
-	public static synthetic fun uploadShortVideo$default (Lnet/mamoe/mirai/contact/Contact;Lnet/mamoe/mirai/utils/ExternalResource;Lnet/mamoe/mirai/utils/ExternalResource;Ljava/lang/String;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
 }
 
 public final class net/mamoe/mirai/contact/Contact$Companion {
@@ -707,6 +666,9 @@ public abstract interface class net/mamoe/mirai/contact/User : kotlinx/coroutine
 	public fun queryProfile ()Lnet/mamoe/mirai/data/UserProfile;
 	public fun queryProfile (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public static synthetic fun queryProfile$suspendImpl (Lnet/mamoe/mirai/contact/User;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public fun sendLike (I)Lnet/mamoe/mirai/message/data/LikeResult;
+	public fun sendLike (ILkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun sendLike$suspendImpl (Lnet/mamoe/mirai/contact/User;ILkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public fun sendMessage (Ljava/lang/String;)Lnet/mamoe/mirai/message/MessageReceipt;
 	public fun sendMessage (Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public fun sendMessage (Lnet/mamoe/mirai/message/data/Message;)Lnet/mamoe/mirai/message/MessageReceipt;
@@ -848,7 +810,6 @@ public final class net/mamoe/mirai/contact/announcement/AnnouncementImage {
 	public fun equals (Ljava/lang/Object;)Z
 	public final fun getHeight ()I
 	public final fun getId ()Ljava/lang/String;
-	public final fun getUrl ()Ljava/lang/String;
 	public final fun getWidth ()I
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
@@ -946,11 +907,9 @@ public abstract interface class net/mamoe/mirai/contact/announcement/Announcemen
 	public abstract fun delete (Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public fun get (Ljava/lang/String;)Lnet/mamoe/mirai/contact/announcement/OnlineAnnouncement;
 	public abstract fun get (Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
-	public fun members (Ljava/lang/String;Z)Ljava/util/List;
 	public abstract fun members (Ljava/lang/String;ZLkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public fun publish (Lnet/mamoe/mirai/contact/announcement/Announcement;)Lnet/mamoe/mirai/contact/announcement/OnlineAnnouncement;
 	public abstract fun publish (Lnet/mamoe/mirai/contact/announcement/Announcement;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
-	public fun remind (Ljava/lang/String;)V
 	public abstract fun remind (Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public fun uploadImage (Lnet/mamoe/mirai/utils/ExternalResource;)Lnet/mamoe/mirai/contact/announcement/AnnouncementImage;
 	public abstract fun uploadImage (Lnet/mamoe/mirai/utils/ExternalResource;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
@@ -1890,13 +1849,6 @@ public final class net/mamoe/mirai/event/events/BeforeImageUploadEvent : net/mam
 	public final fun getTarget ()Lnet/mamoe/mirai/contact/Contact;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
-}
-
-public final class net/mamoe/mirai/event/events/BeforeShortVideoUploadEvent : net/mamoe/mirai/event/AbstractEvent, net/mamoe/mirai/event/CancellableEvent, net/mamoe/mirai/event/events/BotActiveEvent, net/mamoe/mirai/event/events/BotEvent, net/mamoe/mirai/internal/event/VerboseEvent {
-	public fun getBot ()Lnet/mamoe/mirai/Bot;
-	public final fun getTarget ()Lnet/mamoe/mirai/contact/Contact;
-	public final fun getThumbnailSource ()Lnet/mamoe/mirai/utils/ExternalResource;
-	public final fun getVideoSource ()Lnet/mamoe/mirai/utils/ExternalResource;
 }
 
 public abstract interface class net/mamoe/mirai/event/events/BotActiveEvent : net/mamoe/mirai/event/events/BotEvent {
@@ -2959,30 +2911,6 @@ public final class net/mamoe/mirai/event/events/OtherClientOnlineEvent : net/mam
 	public fun toString ()Ljava/lang/String;
 }
 
-public abstract class net/mamoe/mirai/event/events/ShortVideoUploadEvent : net/mamoe/mirai/event/AbstractEvent, net/mamoe/mirai/event/events/BotActiveEvent, net/mamoe/mirai/event/events/BotEvent, net/mamoe/mirai/internal/event/VerboseEvent {
-	public fun getBot ()Lnet/mamoe/mirai/Bot;
-	public abstract fun getTarget ()Lnet/mamoe/mirai/contact/Contact;
-	public abstract fun getThumbnailSource ()Lnet/mamoe/mirai/utils/ExternalResource;
-	public abstract fun getVideoSource ()Lnet/mamoe/mirai/utils/ExternalResource;
-}
-
-public final class net/mamoe/mirai/event/events/ShortVideoUploadEvent$Failed : net/mamoe/mirai/event/events/ShortVideoUploadEvent {
-	public final fun getErrno ()I
-	public final fun getMessage ()Ljava/lang/String;
-	public fun getTarget ()Lnet/mamoe/mirai/contact/Contact;
-	public fun getThumbnailSource ()Lnet/mamoe/mirai/utils/ExternalResource;
-	public fun getVideoSource ()Lnet/mamoe/mirai/utils/ExternalResource;
-	public fun toString ()Ljava/lang/String;
-}
-
-public final class net/mamoe/mirai/event/events/ShortVideoUploadEvent$Succeed : net/mamoe/mirai/event/events/ShortVideoUploadEvent {
-	public fun getTarget ()Lnet/mamoe/mirai/contact/Contact;
-	public fun getThumbnailSource ()Lnet/mamoe/mirai/utils/ExternalResource;
-	public final fun getVideo ()Lnet/mamoe/mirai/message/data/ShortVideo;
-	public fun getVideoSource ()Lnet/mamoe/mirai/utils/ExternalResource;
-	public fun toString ()Ljava/lang/String;
-}
-
 public final class net/mamoe/mirai/event/events/SignEvent : net/mamoe/mirai/event/AbstractEvent, net/mamoe/mirai/event/events/BotEvent, net/mamoe/mirai/internal/network/Packet {
 	public fun getBot ()Lnet/mamoe/mirai/Bot;
 	public final fun getRank ()Ljava/lang/Integer;
@@ -3278,6 +3206,639 @@ public final class net/mamoe/mirai/message/data/AbstractServiceMessage$Companion
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
+public class net/mamoe/mirai/message/data/ArkAppConfig {
+	public static final field Companion Lnet/mamoe/mirai/message/data/ArkAppConfig$Companion;
+	public fun <init> ()V
+	public synthetic fun <init> (ILjava/lang/Long;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/String;Lkotlinx/serialization/internal/SerializationConstructorMarker;)V
+	public fun <init> (Ljava/lang/Long;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/String;)V
+	public synthetic fun <init> (Ljava/lang/Long;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun getCtime ()Ljava/lang/Long;
+	public fun getForward ()Ljava/lang/Integer;
+	public fun getShowSender ()Ljava/lang/Integer;
+	public fun getToken ()Ljava/lang/String;
+	public fun setCtime (Ljava/lang/Long;)V
+	public fun setForward (Ljava/lang/Integer;)V
+	public fun setShowSender (Ljava/lang/Integer;)V
+	public fun setToken (Ljava/lang/String;)V
+	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lnet/mamoe/mirai/message/data/ArkAppConfig;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
+}
+
+public final class net/mamoe/mirai/message/data/ArkAppConfig$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lnet/mamoe/mirai/message/data/ArkAppConfig$$serializer;
+	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lnet/mamoe/mirai/message/data/ArkAppConfig;
+	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lnet/mamoe/mirai/message/data/ArkAppConfig;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class net/mamoe/mirai/message/data/ArkAppConfig$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class net/mamoe/mirai/message/data/ArkAppGiftData {
+	public static final field Companion Lnet/mamoe/mirai/message/data/ArkAppGiftData$Companion;
+	public fun <init> ()V
+	public synthetic fun <init> (ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lkotlinx/serialization/internal/SerializationConstructorMarker;)V
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component10 ()Ljava/lang/String;
+	public final fun component11 ()Ljava/lang/String;
+	public final fun component12 ()Ljava/lang/String;
+	public final fun component13 ()Ljava/lang/String;
+	public final fun component14 ()Ljava/lang/String;
+	public final fun component15 ()Ljava/lang/String;
+	public final fun component16 ()Ljava/lang/String;
+	public final fun component17 ()Ljava/lang/String;
+	public final fun component18 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Ljava/lang/String;
+	public final fun component4 ()Ljava/lang/String;
+	public final fun component5 ()Ljava/lang/String;
+	public final fun component6 ()Ljava/lang/String;
+	public final fun component7 ()Ljava/lang/String;
+	public final fun component8 ()Ljava/lang/String;
+	public final fun component9 ()Ljava/lang/String;
+	public final fun copy (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lnet/mamoe/mirai/message/data/ArkAppGiftData;
+	public static synthetic fun copy$default (Lnet/mamoe/mirai/message/data/ArkAppGiftData;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Lnet/mamoe/mirai/message/data/ArkAppGiftData;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getAnimationType ()Ljava/lang/String;
+	public final fun getArkBgUrl ()Ljava/lang/String;
+	public final fun getArkGuestBgUrl ()Ljava/lang/String;
+	public final fun getBoxZipUrl ()Ljava/lang/String;
+	public final fun getDesc ()Ljava/lang/String;
+	public final fun getGiftMsg ()Ljava/lang/String;
+	public final fun getGiftName ()Ljava/lang/String;
+	public final fun getGiftParticleUrl ()Ljava/lang/String;
+	public final fun getGiftPrice ()Ljava/lang/String;
+	public final fun getGiftZipUrl ()Ljava/lang/String;
+	public final fun getLottieUrl ()Ljava/lang/String;
+	public final fun getMsgId ()Ljava/lang/String;
+	public final fun getOpenIconUrl ()Ljava/lang/String;
+	public final fun getOrderNum ()Ljava/lang/String;
+	public final fun getSender ()Ljava/lang/String;
+	public final fun getToUin ()Ljava/lang/String;
+	public final fun getUnopenIconUrl ()Ljava/lang/String;
+	public fun hashCode ()I
+	public final fun isFree ()Ljava/lang/String;
+	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lnet/mamoe/mirai/message/data/ArkAppGiftData;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
+}
+
+public final class net/mamoe/mirai/message/data/ArkAppGiftData$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lnet/mamoe/mirai/message/data/ArkAppGiftData$$serializer;
+	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lnet/mamoe/mirai/message/data/ArkAppGiftData;
+	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lnet/mamoe/mirai/message/data/ArkAppGiftData;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class net/mamoe/mirai/message/data/ArkAppGiftData$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class net/mamoe/mirai/message/data/ArkAppGroupPushData {
+	public static final field Companion Lnet/mamoe/mirai/message/data/ArkAppGroupPushData$Companion;
+	public fun <init> ()V
+	public synthetic fun <init> (ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lkotlinx/serialization/internal/SerializationConstructorMarker;)V
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component10 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Ljava/lang/String;
+	public final fun component4 ()Ljava/lang/String;
+	public final fun component5 ()Ljava/lang/String;
+	public final fun component6 ()Ljava/lang/String;
+	public final fun component7 ()Ljava/lang/String;
+	public final fun component8 ()Ljava/lang/String;
+	public final fun component9 ()Ljava/lang/String;
+	public final fun copy (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lnet/mamoe/mirai/message/data/ArkAppGroupPushData;
+	public static synthetic fun copy$default (Lnet/mamoe/mirai/message/data/ArkAppGroupPushData;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Lnet/mamoe/mirai/message/data/ArkAppGroupPushData;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getBannerImg ()Ljava/lang/String;
+	public final fun getBannerLink ()Ljava/lang/String;
+	public final fun getBannerTxt ()Ljava/lang/String;
+	public final fun getCancel_url ()Ljava/lang/String;
+	public final fun getFromIcon ()Ljava/lang/String;
+	public final fun getFromName ()Ljava/lang/String;
+	public final fun getItem1Img ()Ljava/lang/String;
+	public final fun getReport_url ()Ljava/lang/String;
+	public final fun getSummaryTxt ()Ljava/lang/String;
+	public final fun getTime ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lnet/mamoe/mirai/message/data/ArkAppGroupPushData;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
+}
+
+public final class net/mamoe/mirai/message/data/ArkAppGroupPushData$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lnet/mamoe/mirai/message/data/ArkAppGroupPushData$$serializer;
+	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lnet/mamoe/mirai/message/data/ArkAppGroupPushData;
+	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lnet/mamoe/mirai/message/data/ArkAppGroupPushData;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class net/mamoe/mirai/message/data/ArkAppGroupPushData$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public class net/mamoe/mirai/message/data/ArkAppMessage : net/mamoe/mirai/message/code/CodableMessage, net/mamoe/mirai/message/data/ConstrainSingle, net/mamoe/mirai/message/data/MessageContent {
+	public static final field Key Lnet/mamoe/mirai/message/data/ArkAppMessage$Key;
+	public static final field SERIAL_NAME Ljava/lang/String;
+	public fun <init> ()V
+	public synthetic fun <init> (ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lnet/mamoe/mirai/message/data/ArkAppMeta;Lnet/mamoe/mirai/message/data/ArkAppConfig;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/ArrayList;Ljava/lang/String;Ljava/lang/String;Lkotlinx/serialization/internal/SerializationConstructorMarker;)V
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lnet/mamoe/mirai/message/data/ArkAppMeta;Lnet/mamoe/mirai/message/data/ArkAppConfig;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/ArrayList;Ljava/lang/String;Ljava/lang/String;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lnet/mamoe/mirai/message/data/ArkAppMeta;Lnet/mamoe/mirai/message/data/ArkAppConfig;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/ArrayList;Ljava/lang/String;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun contentToString ()Ljava/lang/String;
+	public fun getActionData ()Ljava/lang/String;
+	public fun getActionData_A ()Ljava/lang/String;
+	public fun getApp ()Ljava/lang/String;
+	public fun getAppId ()Ljava/lang/String;
+	public fun getConfig ()Lnet/mamoe/mirai/message/data/ArkAppConfig;
+	public fun getDesc ()Ljava/lang/String;
+	public fun getExtra ()Ljava/lang/String;
+	public fun getExtraApps ()Ljava/util/ArrayList;
+	public fun getKey ()Lnet/mamoe/mirai/message/data/MessageKey;
+	public fun getMeta ()Lnet/mamoe/mirai/message/data/ArkAppMeta;
+	public fun getPrompt ()Ljava/lang/String;
+	public fun getSourceAd ()Ljava/lang/String;
+	public fun getSourceName ()Ljava/lang/String;
+	public fun getSourceUrl ()Ljava/lang/String;
+	public fun getText ()Ljava/lang/String;
+	public fun getVer ()Ljava/lang/String;
+	public fun getView ()Ljava/lang/String;
+	public fun setActionData (Ljava/lang/String;)V
+	public fun setActionData_A (Ljava/lang/String;)V
+	public fun setApp (Ljava/lang/String;)V
+	public fun setAppId (Ljava/lang/String;)V
+	public fun setConfig (Lnet/mamoe/mirai/message/data/ArkAppConfig;)V
+	public fun setDesc (Ljava/lang/String;)V
+	public fun setExtra (Ljava/lang/String;)V
+	public fun setExtraApps (Ljava/util/ArrayList;)V
+	public fun setMeta (Lnet/mamoe/mirai/message/data/ArkAppMeta;)V
+	public fun setPrompt (Ljava/lang/String;)V
+	public fun setSourceAd (Ljava/lang/String;)V
+	public fun setSourceName (Ljava/lang/String;)V
+	public fun setSourceUrl (Ljava/lang/String;)V
+	public fun setText (Ljava/lang/String;)V
+	public fun setVer (Ljava/lang/String;)V
+	public fun setView (Ljava/lang/String;)V
+	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lnet/mamoe/mirai/message/data/ArkAppMessage;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
+}
+
+public final class net/mamoe/mirai/message/data/ArkAppMessage$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lnet/mamoe/mirai/message/data/ArkAppMessage$$serializer;
+	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lnet/mamoe/mirai/message/data/ArkAppMessage;
+	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lnet/mamoe/mirai/message/data/ArkAppMessage;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class net/mamoe/mirai/message/data/ArkAppMessage$Key : net/mamoe/mirai/message/data/AbstractPolymorphicMessageKey {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public class net/mamoe/mirai/message/data/ArkAppMeta {
+	public static final field Companion Lnet/mamoe/mirai/message/data/ArkAppMeta$Companion;
+	public fun <init> ()V
+	public synthetic fun <init> (ILnet/mamoe/mirai/message/data/ArkAppSingleImg;Lnet/mamoe/mirai/message/data/ArkAppGroupPushData;Lnet/mamoe/mirai/message/data/ArkAppNotification;Lnet/mamoe/mirai/message/data/ArkAppRobot;Lnet/mamoe/mirai/message/data/ArkAppTask;Lnet/mamoe/mirai/message/data/ArkAppNews;Lkotlinx/serialization/internal/SerializationConstructorMarker;)V
+	public fun <init> (Lnet/mamoe/mirai/message/data/ArkAppSingleImg;Lnet/mamoe/mirai/message/data/ArkAppGroupPushData;Lnet/mamoe/mirai/message/data/ArkAppNotification;Lnet/mamoe/mirai/message/data/ArkAppRobot;Lnet/mamoe/mirai/message/data/ArkAppTask;Lnet/mamoe/mirai/message/data/ArkAppNews;)V
+	public synthetic fun <init> (Lnet/mamoe/mirai/message/data/ArkAppSingleImg;Lnet/mamoe/mirai/message/data/ArkAppGroupPushData;Lnet/mamoe/mirai/message/data/ArkAppNotification;Lnet/mamoe/mirai/message/data/ArkAppRobot;Lnet/mamoe/mirai/message/data/ArkAppTask;Lnet/mamoe/mirai/message/data/ArkAppNews;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun getDetail ()Lnet/mamoe/mirai/message/data/ArkAppTask;
+	public fun getGroupPushData ()Lnet/mamoe/mirai/message/data/ArkAppGroupPushData;
+	public fun getNews ()Lnet/mamoe/mirai/message/data/ArkAppNews;
+	public fun getNotification ()Lnet/mamoe/mirai/message/data/ArkAppNotification;
+	public fun getRobot ()Lnet/mamoe/mirai/message/data/ArkAppRobot;
+	public fun getSingleImg ()Lnet/mamoe/mirai/message/data/ArkAppSingleImg;
+	public fun setDetail (Lnet/mamoe/mirai/message/data/ArkAppTask;)V
+	public fun setGroupPushData (Lnet/mamoe/mirai/message/data/ArkAppGroupPushData;)V
+	public fun setNews (Lnet/mamoe/mirai/message/data/ArkAppNews;)V
+	public fun setNotification (Lnet/mamoe/mirai/message/data/ArkAppNotification;)V
+	public fun setRobot (Lnet/mamoe/mirai/message/data/ArkAppRobot;)V
+	public fun setSingleImg (Lnet/mamoe/mirai/message/data/ArkAppSingleImg;)V
+	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lnet/mamoe/mirai/message/data/ArkAppMeta;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
+}
+
+public final class net/mamoe/mirai/message/data/ArkAppMeta$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lnet/mamoe/mirai/message/data/ArkAppMeta$$serializer;
+	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lnet/mamoe/mirai/message/data/ArkAppMeta;
+	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lnet/mamoe/mirai/message/data/ArkAppMeta;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class net/mamoe/mirai/message/data/ArkAppMeta$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public class net/mamoe/mirai/message/data/ArkAppMusic {
+	public static final field Companion Lnet/mamoe/mirai/message/data/ArkAppMusic$Companion;
+	public fun <init> ()V
+	public synthetic fun <init> (ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;JILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lkotlinx/serialization/internal/SerializationConstructorMarker;)V
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;JILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;JILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun getAction ()Ljava/lang/String;
+	public fun getAndroid_pkg_name ()Ljava/lang/String;
+	public fun getApp_type ()I
+	public fun getAppid ()J
+	public fun getDesc ()Ljava/lang/String;
+	public fun getJumpUrl ()Ljava/lang/String;
+	public fun getMusicUrl ()Ljava/lang/String;
+	public fun getPreview ()Ljava/lang/String;
+	public fun getSourceMsgId ()Ljava/lang/String;
+	public fun getSource_icon ()Ljava/lang/String;
+	public fun getSource_url ()Ljava/lang/String;
+	public fun getTag ()Ljava/lang/String;
+	public fun getTitle ()Ljava/lang/String;
+	public fun setAction (Ljava/lang/String;)V
+	public fun setAndroid_pkg_name (Ljava/lang/String;)V
+	public fun setApp_type (I)V
+	public fun setAppid (J)V
+	public fun setDesc (Ljava/lang/String;)V
+	public fun setJumpUrl (Ljava/lang/String;)V
+	public fun setMusicUrl (Ljava/lang/String;)V
+	public fun setPreview (Ljava/lang/String;)V
+	public fun setSourceMsgId (Ljava/lang/String;)V
+	public fun setSource_icon (Ljava/lang/String;)V
+	public fun setSource_url (Ljava/lang/String;)V
+	public fun setTag (Ljava/lang/String;)V
+	public fun setTitle (Ljava/lang/String;)V
+	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lnet/mamoe/mirai/message/data/ArkAppMusic;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
+}
+
+public final class net/mamoe/mirai/message/data/ArkAppMusic$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lnet/mamoe/mirai/message/data/ArkAppMusic$$serializer;
+	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lnet/mamoe/mirai/message/data/ArkAppMusic;
+	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lnet/mamoe/mirai/message/data/ArkAppMusic;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class net/mamoe/mirai/message/data/ArkAppMusic$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public class net/mamoe/mirai/message/data/ArkAppNews {
+	public static final field Companion Lnet/mamoe/mirai/message/data/ArkAppNews$Companion;
+	public fun <init> ()V
+	public synthetic fun <init> (ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Long;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lkotlinx/serialization/internal/SerializationConstructorMarker;)V
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Long;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Long;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun getAction ()Ljava/lang/String;
+	public fun getAndroid_pkg_name ()Ljava/lang/String;
+	public fun getApp_type ()Ljava/lang/Integer;
+	public fun getAppid ()Ljava/lang/Long;
+	public fun getDesc ()Ljava/lang/String;
+	public fun getJumpUrl ()Ljava/lang/String;
+	public fun getPreview ()Ljava/lang/String;
+	public fun getSource_icon ()Ljava/lang/String;
+	public fun getSource_url ()Ljava/lang/String;
+	public fun getTag ()Ljava/lang/String;
+	public fun getTitle ()Ljava/lang/String;
+	public fun setAction (Ljava/lang/String;)V
+	public fun setAndroid_pkg_name (Ljava/lang/String;)V
+	public fun setApp_type (Ljava/lang/Integer;)V
+	public fun setAppid (Ljava/lang/Long;)V
+	public fun setDesc (Ljava/lang/String;)V
+	public fun setJumpUrl (Ljava/lang/String;)V
+	public fun setPreview (Ljava/lang/String;)V
+	public fun setSource_icon (Ljava/lang/String;)V
+	public fun setSource_url (Ljava/lang/String;)V
+	public fun setTag (Ljava/lang/String;)V
+	public fun setTitle (Ljava/lang/String;)V
+	public static final fun write$Self (Lnet/mamoe/mirai/message/data/ArkAppNews;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
+}
+
+public final class net/mamoe/mirai/message/data/ArkAppNews$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lnet/mamoe/mirai/message/data/ArkAppNews$$serializer;
+	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lnet/mamoe/mirai/message/data/ArkAppNews;
+	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lnet/mamoe/mirai/message/data/ArkAppNews;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class net/mamoe/mirai/message/data/ArkAppNews$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public class net/mamoe/mirai/message/data/ArkAppNotification {
+	public static final field Companion Lnet/mamoe/mirai/message/data/ArkAppNotification$Companion;
+	public fun <init> ()V
+	public synthetic fun <init> (ILnet/mamoe/mirai/message/data/ArkAppNotification$AppInfo;Ljava/util/List;Ljava/util/List;Ljava/lang/String;Ljava/lang/String;Lkotlinx/serialization/internal/SerializationConstructorMarker;)V
+	public fun <init> (Lnet/mamoe/mirai/message/data/ArkAppNotification$AppInfo;Ljava/util/List;Ljava/util/List;Ljava/lang/String;Ljava/lang/String;)V
+	public synthetic fun <init> (Lnet/mamoe/mirai/message/data/ArkAppNotification$AppInfo;Ljava/util/List;Ljava/util/List;Ljava/lang/String;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun getAppInfo ()Lnet/mamoe/mirai/message/data/ArkAppNotification$AppInfo;
+	public fun getButton ()Ljava/util/List;
+	public fun getData ()Ljava/util/List;
+	public fun getEmphasis_keyword ()Ljava/lang/String;
+	public fun getTitle ()Ljava/lang/String;
+	public fun setAppInfo (Lnet/mamoe/mirai/message/data/ArkAppNotification$AppInfo;)V
+	public fun setButton (Ljava/util/List;)V
+	public fun setData (Ljava/util/List;)V
+	public fun setEmphasis_keyword (Ljava/lang/String;)V
+	public fun setTitle (Ljava/lang/String;)V
+	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lnet/mamoe/mirai/message/data/ArkAppNotification;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
+}
+
+public final class net/mamoe/mirai/message/data/ArkAppNotification$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lnet/mamoe/mirai/message/data/ArkAppNotification$$serializer;
+	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lnet/mamoe/mirai/message/data/ArkAppNotification;
+	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lnet/mamoe/mirai/message/data/ArkAppNotification;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public class net/mamoe/mirai/message/data/ArkAppNotification$AppInfo {
+	public static final field Companion Lnet/mamoe/mirai/message/data/ArkAppNotification$AppInfo$Companion;
+	public fun <init> ()V
+	public synthetic fun <init> (ILjava/lang/String;IJLjava/lang/String;Lkotlinx/serialization/internal/SerializationConstructorMarker;)V
+	public fun <init> (Ljava/lang/String;IJLjava/lang/String;)V
+	public synthetic fun <init> (Ljava/lang/String;IJLjava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun getAppName ()Ljava/lang/String;
+	public fun getAppType ()I
+	public fun getAppid ()J
+	public fun getIconUrl ()Ljava/lang/String;
+	public fun setAppName (Ljava/lang/String;)V
+	public fun setAppType (I)V
+	public fun setAppid (J)V
+	public fun setIconUrl (Ljava/lang/String;)V
+	public static final fun write$Self (Lnet/mamoe/mirai/message/data/ArkAppNotification$AppInfo;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
+}
+
+public final class net/mamoe/mirai/message/data/ArkAppNotification$AppInfo$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lnet/mamoe/mirai/message/data/ArkAppNotification$AppInfo$$serializer;
+	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lnet/mamoe/mirai/message/data/ArkAppNotification$AppInfo;
+	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lnet/mamoe/mirai/message/data/ArkAppNotification$AppInfo;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class net/mamoe/mirai/message/data/ArkAppNotification$AppInfo$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class net/mamoe/mirai/message/data/ArkAppNotification$Button {
+	public static final field Companion Lnet/mamoe/mirai/message/data/ArkAppNotification$Button$Companion;
+	public fun <init> ()V
+	public synthetic fun <init> (ILjava/lang/String;Ljava/lang/String;Lkotlinx/serialization/internal/SerializationConstructorMarker;)V
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun getAction ()Ljava/lang/String;
+	public final fun getName ()Ljava/lang/String;
+	public static final fun write$Self (Lnet/mamoe/mirai/message/data/ArkAppNotification$Button;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
+}
+
+public final class net/mamoe/mirai/message/data/ArkAppNotification$Button$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lnet/mamoe/mirai/message/data/ArkAppNotification$Button$$serializer;
+	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lnet/mamoe/mirai/message/data/ArkAppNotification$Button;
+	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lnet/mamoe/mirai/message/data/ArkAppNotification$Button;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class net/mamoe/mirai/message/data/ArkAppNotification$Button$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class net/mamoe/mirai/message/data/ArkAppNotification$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class net/mamoe/mirai/message/data/ArkAppNotification$Data {
+	public static final field Companion Lnet/mamoe/mirai/message/data/ArkAppNotification$Data$Companion;
+	public fun <init> ()V
+	public synthetic fun <init> (ILjava/lang/String;Ljava/lang/String;Lkotlinx/serialization/internal/SerializationConstructorMarker;)V
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun getTitle ()Ljava/lang/String;
+	public final fun getValue ()Ljava/lang/String;
+	public static final fun write$Self (Lnet/mamoe/mirai/message/data/ArkAppNotification$Data;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
+}
+
+public final class net/mamoe/mirai/message/data/ArkAppNotification$Data$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lnet/mamoe/mirai/message/data/ArkAppNotification$Data$$serializer;
+	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lnet/mamoe/mirai/message/data/ArkAppNotification$Data;
+	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lnet/mamoe/mirai/message/data/ArkAppNotification$Data;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class net/mamoe/mirai/message/data/ArkAppNotification$Data$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public class net/mamoe/mirai/message/data/ArkAppRobot {
+	public static final field Companion Lnet/mamoe/mirai/message/data/ArkAppRobot$Companion;
+	public fun <init> ()V
+	public synthetic fun <init> (ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lkotlinx/serialization/internal/SerializationConstructorMarker;)V
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun getCover ()Ljava/lang/String;
+	public fun getJump_url ()Ljava/lang/String;
+	public fun getSubtitle ()Ljava/lang/String;
+	public fun getTitle ()Ljava/lang/String;
+	public fun setCover (Ljava/lang/String;)V
+	public fun setJump_url (Ljava/lang/String;)V
+	public fun setSubtitle (Ljava/lang/String;)V
+	public fun setTitle (Ljava/lang/String;)V
+	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lnet/mamoe/mirai/message/data/ArkAppRobot;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
+}
+
+public final class net/mamoe/mirai/message/data/ArkAppRobot$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lnet/mamoe/mirai/message/data/ArkAppRobot$$serializer;
+	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lnet/mamoe/mirai/message/data/ArkAppRobot;
+	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lnet/mamoe/mirai/message/data/ArkAppRobot;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class net/mamoe/mirai/message/data/ArkAppRobot$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class net/mamoe/mirai/message/data/ArkAppSingleImg {
+	public static final field Companion Lnet/mamoe/mirai/message/data/ArkAppSingleImg$Companion;
+	public fun <init> ()V
+	public synthetic fun <init> (ILjava/lang/String;Ljava/lang/String;Lkotlinx/serialization/internal/SerializationConstructorMarker;)V
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun copy (Ljava/lang/String;Ljava/lang/String;)Lnet/mamoe/mirai/message/data/ArkAppSingleImg;
+	public static synthetic fun copy$default (Lnet/mamoe/mirai/message/data/ArkAppSingleImg;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Lnet/mamoe/mirai/message/data/ArkAppSingleImg;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getMainImage ()Ljava/lang/String;
+	public final fun getMainUrl ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lnet/mamoe/mirai/message/data/ArkAppSingleImg;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
+}
+
+public final class net/mamoe/mirai/message/data/ArkAppSingleImg$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lnet/mamoe/mirai/message/data/ArkAppSingleImg$$serializer;
+	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lnet/mamoe/mirai/message/data/ArkAppSingleImg;
+	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lnet/mamoe/mirai/message/data/ArkAppSingleImg;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class net/mamoe/mirai/message/data/ArkAppSingleImg$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public class net/mamoe/mirai/message/data/ArkAppTask {
+	public static final field Companion Lnet/mamoe/mirai/message/data/ArkAppTask$Companion;
+	public fun <init> ()V
+	public synthetic fun <init> (ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ljava/util/List;Ljava/util/List;Lkotlinx/serialization/internal/SerializationConstructorMarker;)V
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ljava/util/List;Ljava/util/List;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ljava/util/List;Ljava/util/List;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun getAppID ()Ljava/lang/String;
+	public fun getBattleDesc ()Ljava/lang/String;
+	public fun getBotName ()Ljava/lang/String;
+	public fun getCmdList ()Ljava/util/List;
+	public fun getCmdTitle ()Ljava/lang/String;
+	public fun getContent ()Ljava/lang/String;
+	public fun getGuildID ()Ljava/lang/String;
+	public fun getIconLeft ()Ljava/util/List;
+	public fun getIconRight ()Ljava/util/List;
+	public fun getReceiverName ()Ljava/lang/String;
+	public fun getSubGuildID ()Ljava/lang/String;
+	public fun getTitle ()Ljava/lang/String;
+	public fun getTitleColor ()Ljava/lang/String;
+	public fun setAppID (Ljava/lang/String;)V
+	public fun setBattleDesc (Ljava/lang/String;)V
+	public fun setBotName (Ljava/lang/String;)V
+	public fun setCmdList (Ljava/util/List;)V
+	public fun setCmdTitle (Ljava/lang/String;)V
+	public fun setContent (Ljava/lang/String;)V
+	public fun setGuildID (Ljava/lang/String;)V
+	public fun setIconLeft (Ljava/util/List;)V
+	public fun setIconRight (Ljava/util/List;)V
+	public fun setReceiverName (Ljava/lang/String;)V
+	public fun setSubGuildID (Ljava/lang/String;)V
+	public fun setTitle (Ljava/lang/String;)V
+	public fun setTitleColor (Ljava/lang/String;)V
+	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lnet/mamoe/mirai/message/data/ArkAppTask;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
+}
+
+public final class net/mamoe/mirai/message/data/ArkAppTask$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lnet/mamoe/mirai/message/data/ArkAppTask$$serializer;
+	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lnet/mamoe/mirai/message/data/ArkAppTask;
+	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lnet/mamoe/mirai/message/data/ArkAppTask;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public class net/mamoe/mirai/message/data/ArkAppTask$ArkAppTaskCmd {
+	public static final field Companion Lnet/mamoe/mirai/message/data/ArkAppTask$ArkAppTaskCmd$Companion;
+	public fun <init> ()V
+	public synthetic fun <init> (ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Lkotlinx/serialization/internal/SerializationConstructorMarker;)V
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun getCmd ()Ljava/lang/String;
+	public fun getCmdDesc ()Ljava/lang/String;
+	public fun getCmdTitle ()Ljava/lang/String;
+	public fun setCmd (Ljava/lang/String;)V
+	public fun setCmdDesc (Ljava/lang/String;)V
+	public fun setCmdTitle (Ljava/lang/String;)V
+	public static final fun write$Self (Lnet/mamoe/mirai/message/data/ArkAppTask$ArkAppTaskCmd;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
+}
+
+public final class net/mamoe/mirai/message/data/ArkAppTask$ArkAppTaskCmd$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lnet/mamoe/mirai/message/data/ArkAppTask$ArkAppTaskCmd$$serializer;
+	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lnet/mamoe/mirai/message/data/ArkAppTask$ArkAppTaskCmd;
+	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lnet/mamoe/mirai/message/data/ArkAppTask$ArkAppTaskCmd;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class net/mamoe/mirai/message/data/ArkAppTask$ArkAppTaskCmd$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public class net/mamoe/mirai/message/data/ArkAppTask$ArkAppTaskIcon {
+	public static final field Companion Lnet/mamoe/mirai/message/data/ArkAppTask$ArkAppTaskIcon$Companion;
+	public fun <init> ()V
+	public synthetic fun <init> (ILjava/lang/String;Lkotlinx/serialization/internal/SerializationConstructorMarker;)V
+	public fun <init> (Ljava/lang/String;)V
+	public synthetic fun <init> (Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun getNum ()Ljava/lang/String;
+	public fun setNum (Ljava/lang/String;)V
+	public static final fun write$Self (Lnet/mamoe/mirai/message/data/ArkAppTask$ArkAppTaskIcon;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
+}
+
+public final class net/mamoe/mirai/message/data/ArkAppTask$ArkAppTaskIcon$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lnet/mamoe/mirai/message/data/ArkAppTask$ArkAppTaskIcon$$serializer;
+	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lnet/mamoe/mirai/message/data/ArkAppTask$ArkAppTaskIcon;
+	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lnet/mamoe/mirai/message/data/ArkAppTask$ArkAppTaskIcon;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class net/mamoe/mirai/message/data/ArkAppTask$ArkAppTaskIcon$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class net/mamoe/mirai/message/data/ArkAppTask$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
 public final class net/mamoe/mirai/message/data/At : net/mamoe/mirai/message/code/CodableMessage, net/mamoe/mirai/message/data/MessageContent {
 	public static final field Companion Lnet/mamoe/mirai/message/data/At$Companion;
 	public static final field SERIAL_NAME Ljava/lang/String;
@@ -3467,7 +4028,6 @@ public final class net/mamoe/mirai/message/data/Face : net/mamoe/mirai/message/c
 	public static final field BANG_BANG_TANG I
 	public static final field BAN_ZHUAN_ZHONG I
 	public static final field BAO_BAO I
-	public static final field BAO_FU I
 	public static final field BAO_JI I
 	public static final field BAO_JIN I
 	public static final field BAO_QUAN I
@@ -3497,7 +4057,6 @@ public final class net/mamoe/mirai/message/data/Face : net/mamoe/mirai/message/c
 	public static final field CHI_GUA I
 	public static final field CHI_TANG I
 	public static final field CHONG_BAI I
-	public static final field CUO_HAO I
 	public static final field Companion Lnet/mamoe/mirai/message/data/Face$Companion;
 	public static final field DAN I
 	public static final field DAN_GAO I
@@ -3506,15 +4065,11 @@ public final class net/mamoe/mirai/message/data/Face : net/mamoe/mirai/message/c
 	public static final field DA_KU I
 	public static final field DA_LIAN I
 	public static final field DA_XIAO I
-	public static final field DA_YUAN_ZHONG I
-	public static final field DA_ZHAN_HONG_TU I
-	public static final field DA_ZHAO_HU I
 	public static final field DENG_LONG I
 	public static final field DE_YI I
 	public static final field DIAN_ZAN I
 	public static final field DIAO_XIE I
 	public static final field DING_GUA_GUA I
-	public static final field DUI_HAO I
 	public static final field E I
 	public static final field FAN I
 	public static final field FA_DAI I
@@ -3524,7 +4079,6 @@ public final class net/mamoe/mirai/message/data/Face : net/mamoe/mirai/message/c
 	public static final field FEI_WEN I
 	public static final field FEN_DOU I
 	public static final field FO_XI I
-	public static final field FU_LUO_BO I
 	public static final field GAN_BEI I
 	public static final field GAN_GA I
 	public static final field GONG_XI I
@@ -3545,15 +4099,11 @@ public final class net/mamoe/mirai/message/data/Face : net/mamoe/mirai/message/c
 	public static final field HE_XIE I
 	public static final field HONG_BAO I
 	public static final field HONG_BAO_BAO I
-	public static final field HONG_BAO_DUO_DUO I
 	public static final field HUAI_XIAO I
 	public static final field HUA_CHI I
-	public static final field HUA_DUO_LIAN I
 	public static final field HUI_SHOU I
 	public static final field HUI_TOU I
-	public static final field HU_HU_SHENG_WEI I
 	public static final field HU_LIAN I
-	public static final field JIA_YI I
 	public static final field JIA_YOU I
 	public static final field JIA_YOU_BAO_BAO I
 	public static final field JIA_YOU_BI_SHENG I
@@ -3562,14 +4112,12 @@ public final class net/mamoe/mirai/message/data/Face : net/mamoe/mirai/message/c
 	public static final field JING_KONG I
 	public static final field JING_LI I
 	public static final field JING_XI I
-	public static final field JING_XIA I
 	public static final field JING_YA I
 	public static final field JI_DONG I
 	public static final field JI_E I
 	public static final field JI_ZHANG I
 	public static final field JU_HUA I
 	public static final field JU_JUE I
-	public static final field JU_PAI_PAI I
 	public static final field KAI_QIANG I
 	public static final field KA_FEI I
 	public static final field KEN_TOU I
@@ -3602,7 +4150,6 @@ public final class net/mamoe/mirai/message/data/Face : net/mamoe/mirai/message/c
 	public static final field MEI_GUI I
 	public static final field MIAN_WU_BIAO_QING I
 	public static final field MIAO_MIAO I
-	public static final field MING_BAI I
 	public static final field MO_GUI_XIAO I
 	public static final field MO_JIN_LI I
 	public static final field MO_YU I
@@ -3611,7 +4158,6 @@ public final class net/mamoe/mirai/message/data/Face : net/mamoe/mirai/message/c
 	public static final field NA_DAO_HONG_BAO I
 	public static final field NIU_A I
 	public static final field NIU_QI_CHONG_TIAN I
-	public static final field NI_ZHEN_BANG_BANG I
 	public static final field NO I
 	public static final field O I
 	public static final field OK I
@@ -3640,14 +4186,12 @@ public final class net/mamoe/mirai/message/data/Face : net/mamoe/mirai/message/c
 	public static final field QUAN_TOU I
 	public static final field RANG_WO_KANG_KANG I
 	public static final field RENG_GOU I
-	public static final field RE_HUA_LE I
 	public static final field SAO_RAO I
 	public static final field SE I
 	public static final field SERIAL_NAME Ljava/lang/String;
 	public static final field SHAN_DIAN I
 	public static final field SHAN_LIAN I
 	public static final field SHENG_LI I
-	public static final field SHENG_QI I
 	public static final field SHENG_RI_KUAI_LE I
 	public static final field SHI_AI I
 	public static final field SHOU_QIANG I
@@ -3656,10 +4200,8 @@ public final class net/mamoe/mirai/message/data/Face : net/mamoe/mirai/message/c
 	public static final field SHUANG_XI I
 	public static final field SHUI I
 	public static final field SONG_HUA I
-	public static final field SUAN_Q I
 	public static final field TAI_NAN_LE I
 	public static final field TAI_YANG I
-	public static final field TIAN_PING I
 	public static final field TIAN_YI_TIAN I
 	public static final field TIAO_PI I
 	public static final field TIAO_SHENG I
@@ -3672,16 +4214,13 @@ public final class net/mamoe/mirai/message/data/Face : net/mamoe/mirai/message/c
 	public static final field TUO_LIAN I
 	public static final field TUO_SAI I
 	public static final field WANG_WANG I
-	public static final field WAN_CHENG I
 	public static final field WEI_QU I
 	public static final field WEI_XIAO I
 	public static final field WEN_HAO_LIAN I
 	public static final field WO_BU_KAN I
-	public static final field WO_FANG_LE I
 	public static final field WO_MEI_SHI I
 	public static final field WO_SHOU I
 	public static final field WO_SUAN_LE I
-	public static final field WO_XIANG_KAI_LE I
 	public static final field WO_ZUI_MEI I
 	public static final field WU_LIAN I
 	public static final field WU_LIAO I
@@ -3700,7 +4239,6 @@ public final class net/mamoe/mirai/message/data/Face : net/mamoe/mirai/message/c
 	public static final field XI_GUA I
 	public static final field XU I
 	public static final field YANG_TUO I
-	public static final field YAN_HUA I
 	public static final field YAO I
 	public static final field YIN_XIAN I
 	public static final field YI_WEN I
@@ -3740,12 +4278,10 @@ public final class net/mamoe/mirai/message/data/Face : net/mamoe/mirai/message/c
 	public static final field names [Ljava/lang/String;
 	public static final field 不 I
 	public static final field 不开心 I
-	public static final field 举牌牌 I
 	public static final field 乒乓 I
 	public static final field 亲亲 I
 	public static final field 仔细分析 I
 	public static final field 佛系 I
-	public static final field 你真棒棒 I
 	public static final field 便便 I
 	public static final field 偷看 I
 	public static final field 偷笑 I
@@ -3757,7 +4293,6 @@ public final class net/mamoe/mirai/message/data/Face : net/mamoe/mirai/message/c
 	public static final field 凋谢 I
 	public static final field 击掌 I
 	public static final field 刀 I
-	public static final field 加一 I
 	public static final field 加油 I
 	public static final field 加油必胜 I
 	public static final field 加油抱抱 I
@@ -3805,8 +4340,6 @@ public final class net/mamoe/mirai/message/data/Face : net/mamoe/mirai/message/c
 	public static final field 困 I
 	public static final field 坏笑 I
 	public static final field 大哭 I
-	public static final field 大展宏兔 I
-	public static final field 大怨种 I
 	public static final field 大笑 I
 	public static final field 太南了 I
 	public static final field 太阳 I
@@ -3818,10 +4351,8 @@ public final class net/mamoe/mirai/message/data/Face : net/mamoe/mirai/message/c
 	public static final field 好闪 I
 	public static final field 委屈 I
 	public static final field 嫌弃 I
-	public static final field 完成 I
 	public static final field 害怕 I
 	public static final field 害羞 I
-	public static final field 对号 I
 	public static final field 小样儿 I
 	public static final field 小纠结 I
 	public static final field 尴尬 I
@@ -3843,22 +4374,18 @@ public final class net/mamoe/mirai/message/data/Face : net/mamoe/mirai/message/c
 	public static final field 怄火 I
 	public static final field 恭喜 I
 	public static final field 悠闲 I
-	public static final field 惊吓 I
 	public static final field 惊呆 I
 	public static final field 惊喜 I
 	public static final field 惊恐 I
 	public static final field 惊讶 I
 	public static final field 憨笑 I
 	public static final field 我不看 I
-	public static final field 我想开了 I
-	public static final field 我方了 I
 	public static final field 我最美 I
 	public static final field 我没事 I
 	public static final field 我酸了 I
 	public static final field 扇脸 I
 	public static final field 手枪 I
 	public static final field 打call I
-	public static final field 打招呼 I
 	public static final field 打脸 I
 	public static final field 扔狗 I
 	public static final field 托脸 I
@@ -3897,7 +4424,6 @@ public final class net/mamoe/mirai/message/data/Face : net/mamoe/mirai/message/c
 	public static final field 无奈 I
 	public static final field 无眼笑 I
 	public static final field 无聊 I
-	public static final field 明白 I
 	public static final field 晕 I
 	public static final field 暗中观察 I
 	public static final field 暴击 I
@@ -3917,8 +4443,6 @@ public final class net/mamoe/mirai/message/data/Face : net/mamoe/mirai/message/c
 	public static final field 灯笼 I
 	public static final field 炸弹 I
 	public static final field 点赞 I
-	public static final field 烟花 I
-	public static final field 热化了 I
 	public static final field 爆筋 I
 	public static final field 爱你 I
 	public static final field 爱心 I
@@ -3931,7 +4455,6 @@ public final class net/mamoe/mirai/message/data/Face : net/mamoe/mirai/message/c
 	public static final field 玫瑰 I
 	public static final field 瓢虫 I
 	public static final field 生日快乐 I
-	public static final field 生气 I
 	public static final field 甩头 I
 	public static final field 疑问 I
 	public static final field 白眼 I
@@ -3943,30 +4466,25 @@ public final class net/mamoe/mirai/message/data/Face : net/mamoe/mirai/message/c
 	public static final field 示爱 I
 	public static final field 礼物 I
 	public static final field 祈祷 I
-	public static final field 福萝卜 I
 	public static final field 笑哭 I
 	public static final field 篮球 I
 	public static final field 糊脸 I
 	public static final field 糗大了 I
 	public static final field 红包 I
 	public static final field 红包包 I
-	public static final field 红包多多 I
 	public static final field 羊驼 I
 	public static final field 老色痞 I
 	public static final field 胖三斤 I
 	public static final field 胜利 I
 	public static final field 脑阔疼 I
 	public static final field 舔一舔 I
-	public static final field 舔屏 I
 	public static final field 色 I
-	public static final field 花朵脸 I
 	public static final field 花痴 I
 	public static final field 茶 I
 	public static final field 药 I
 	public static final field 菊花 I
 	public static final field 菜刀 I
 	public static final field 菜狗 I
-	public static final field 虎虎生威 I
 	public static final field 蛋 I
 	public static final field 蛋糕 I
 	public static final field 街舞 I
@@ -3976,7 +4494,6 @@ public final class net/mamoe/mirai/message/data/Face : net/mamoe/mirai/message/c
 	public static final field 请 I
 	public static final field 调皮 I
 	public static final field 谢红包 I
-	public static final field 豹富 I
 	public static final field 赞 I
 	public static final field 足球 I
 	public static final field 跳绳 I
@@ -3989,9 +4506,7 @@ public final class net/mamoe/mirai/message/data/Face : net/mamoe/mirai/message/c
 	public static final field 送花 I
 	public static final field 鄙视 I
 	public static final field 酷 I
-	public static final field 酸Q I
 	public static final field 钞票 I
-	public static final field 错号 I
 	public static final field 闪电 I
 	public static final field 闭嘴 I
 	public static final field 问号脸 I
@@ -4043,6 +4558,7 @@ public final class net/mamoe/mirai/message/data/Face$Companion {
 public abstract interface class net/mamoe/mirai/message/data/FileMessage : net/mamoe/mirai/message/code/CodableMessage, net/mamoe/mirai/message/data/ConstrainSingle, net/mamoe/mirai/message/data/MessageContent {
 	public static final field Key Lnet/mamoe/mirai/message/data/FileMessage$Key;
 	public static final field SERIAL_NAME Ljava/lang/String;
+	public fun appendMiraiCodeTo (Ljava/lang/StringBuilder;)V
 	public fun contentToString ()Ljava/lang/String;
 	public static fun create (Ljava/lang/String;ILjava/lang/String;J)Lnet/mamoe/mirai/message/data/FileMessage;
 	public abstract fun getId ()Ljava/lang/String;
@@ -4469,6 +4985,21 @@ public final class net/mamoe/mirai/message/data/LightApp$Key : net/mamoe/mirai/m
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
+public final class net/mamoe/mirai/message/data/LikeResult {
+	public fun <init> (ZILjava/lang/String;)V
+	public final fun component1 ()Z
+	public final fun component2 ()I
+	public final fun component3 ()Ljava/lang/String;
+	public final fun copy (ZILjava/lang/String;)Lnet/mamoe/mirai/message/data/LikeResult;
+	public static synthetic fun copy$default (Lnet/mamoe/mirai/message/data/LikeResult;ZILjava/lang/String;ILjava/lang/Object;)Lnet/mamoe/mirai/message/data/LikeResult;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getCode ()I
+	public final fun getMsg ()Ljava/lang/String;
+	public final fun getSuccess ()Z
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
 public abstract interface class net/mamoe/mirai/message/data/MarketFace : net/mamoe/mirai/message/data/HummerMessage {
 	public static final field Key Lnet/mamoe/mirai/message/data/MarketFace$Key;
 	public static final field SERIAL_NAME Ljava/lang/String;
@@ -4842,6 +5373,7 @@ public final class net/mamoe/mirai/message/data/MusicShare : net/mamoe/mirai/mes
 	public synthetic fun <init> (ILnet/mamoe/mirai/message/data/MusicKind;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lkotlinx/serialization/internal/SerializationConstructorMarker;)V
 	public fun <init> (Lnet/mamoe/mirai/message/data/MusicKind;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
 	public fun <init> (Lnet/mamoe/mirai/message/data/MusicKind;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+	public fun appendMiraiCodeTo (Ljava/lang/StringBuilder;)V
 	public final fun component1 ()Lnet/mamoe/mirai/message/data/MusicKind;
 	public final fun component2 ()Ljava/lang/String;
 	public final fun component3 ()Ljava/lang/String;
@@ -4909,39 +5441,6 @@ public abstract class net/mamoe/mirai/message/data/OfflineMessageSource : net/ma
 }
 
 public final class net/mamoe/mirai/message/data/OfflineMessageSource$Key : net/mamoe/mirai/message/data/AbstractPolymorphicMessageKey {
-}
-
-public abstract interface class net/mamoe/mirai/message/data/OfflineShortVideo : net/mamoe/mirai/message/data/ShortVideo {
-	public static final field Key Lnet/mamoe/mirai/message/data/OfflineShortVideo$Key;
-	public static final field SERIAL_NAME Ljava/lang/String;
-}
-
-public final class net/mamoe/mirai/message/data/OfflineShortVideo$Builder {
-	public static final field Companion Lnet/mamoe/mirai/message/data/OfflineShortVideo$Builder$Companion;
-	public final fun build ()Lnet/mamoe/mirai/message/data/OfflineShortVideo;
-	public final fun getFileFormat ()Ljava/lang/String;
-	public final fun getFileMd5 ()[B
-	public final fun getFileName ()Ljava/lang/String;
-	public final fun getFileSize ()J
-	public final fun getThumbnailMd5 ()[B
-	public final fun getThumbnailSize ()J
-	public final fun getVideoId ()Ljava/lang/String;
-	public static final fun newBuilder (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;[BJ)Lnet/mamoe/mirai/message/data/OfflineShortVideo$Builder;
-	public final fun setFileFormat (Ljava/lang/String;)V
-	public final fun setFileMd5 ([B)V
-	public final fun setFileName (Ljava/lang/String;)V
-	public final fun setFileSize (J)V
-	public final fun setThumbnailMd5 ([B)V
-	public final fun setThumbnailSize (J)V
-	public final fun setVideoId (Ljava/lang/String;)V
-}
-
-public final class net/mamoe/mirai/message/data/OfflineShortVideo$Builder$Companion {
-	public final fun newBuilder (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;[BJ)Lnet/mamoe/mirai/message/data/OfflineShortVideo$Builder;
-}
-
-public final class net/mamoe/mirai/message/data/OfflineShortVideo$Key : net/mamoe/mirai/message/data/AbstractPolymorphicMessageKey {
-	public static final field SERIAL_NAME Ljava/lang/String;
 }
 
 public abstract interface class net/mamoe/mirai/message/data/OnlineAudio : net/mamoe/mirai/message/data/Audio {
@@ -5090,16 +5589,6 @@ public abstract class net/mamoe/mirai/message/data/OnlineMessageSource$Outgoing$
 }
 
 public final class net/mamoe/mirai/message/data/OnlineMessageSource$Outgoing$ToTemp$Key : net/mamoe/mirai/message/data/AbstractPolymorphicMessageKey {
-}
-
-public abstract interface class net/mamoe/mirai/message/data/OnlineShortVideo : net/mamoe/mirai/message/data/ShortVideo {
-	public static final field Key Lnet/mamoe/mirai/message/data/OnlineShortVideo$Key;
-	public static final field SERIAL_NAME Ljava/lang/String;
-	public abstract fun getUrlForDownload ()Ljava/lang/String;
-}
-
-public final class net/mamoe/mirai/message/data/OnlineShortVideo$Key : net/mamoe/mirai/message/data/AbstractPolymorphicMessageKey {
-	public static final field SERIAL_NAME Ljava/lang/String;
 }
 
 public final class net/mamoe/mirai/message/data/OrNullDelegate {
@@ -5347,24 +5836,6 @@ public abstract interface class net/mamoe/mirai/message/data/ServiceMessage : ne
 public final class net/mamoe/mirai/message/data/ServiceMessage$Key : net/mamoe/mirai/message/data/AbstractPolymorphicMessageKey {
 }
 
-public abstract interface class net/mamoe/mirai/message/data/ShortVideo : net/mamoe/mirai/message/data/ConstrainSingle, net/mamoe/mirai/message/data/MessageContent {
-	public static final field Key Lnet/mamoe/mirai/message/data/ShortVideo$Key;
-	public abstract fun getFileFormat ()Ljava/lang/String;
-	public abstract fun getFileMd5 ()[B
-	public abstract fun getFileSize ()J
-	public abstract fun getFilename ()Ljava/lang/String;
-	public fun getKey ()Lnet/mamoe/mirai/message/data/MessageKey;
-	public abstract fun getVideoId ()Ljava/lang/String;
-}
-
-public final class net/mamoe/mirai/message/data/ShortVideo$Key : net/mamoe/mirai/message/data/AbstractPolymorphicMessageKey {
-}
-
-public final class net/mamoe/mirai/message/data/ShortVideoKt {
-	public static final synthetic fun OfflineShortVideo (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;[BJ[BJ)Lnet/mamoe/mirai/message/data/OfflineShortVideo;
-	public static synthetic fun OfflineShortVideo$default (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;[BJ[BJILjava/lang/Object;)Lnet/mamoe/mirai/message/data/OfflineShortVideo;
-}
-
 public final class net/mamoe/mirai/message/data/ShowImageFlag : net/mamoe/mirai/message/data/AbstractMessageKey, net/mamoe/mirai/message/data/ConstrainSingle, net/mamoe/mirai/message/data/MessageMetadata {
 	public static final field INSTANCE Lnet/mamoe/mirai/message/data/ShowImageFlag;
 	public static final field SERIAL_NAME Ljava/lang/String;
@@ -5399,47 +5870,6 @@ public final class net/mamoe/mirai/message/data/SingleMessage$Serializer : kotli
 	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lnet/mamoe/mirai/message/data/SingleMessage;)V
-}
-
-public final class net/mamoe/mirai/message/data/SuperFace : net/mamoe/mirai/message/code/CodableMessage, net/mamoe/mirai/message/data/HummerMessage {
-	public static final field Key Lnet/mamoe/mirai/message/data/SuperFace$Key;
-	public static final field SERIAL_NAME Ljava/lang/String;
-	public synthetic fun <init> (IILjava/lang/String;ILkotlinx/serialization/internal/SerializationConstructorMarker;)V
-	public fun contentToString ()Ljava/lang/String;
-	public fun equals (Ljava/lang/Object;)Z
-	public static final fun from (Lnet/mamoe/mirai/message/data/Face;)Lnet/mamoe/mirai/message/data/SuperFace;
-	public static final fun fromOrNull (Lnet/mamoe/mirai/message/data/Face;)Lnet/mamoe/mirai/message/data/SuperFace;
-	public final fun getFace ()I
-	public final fun getId ()Ljava/lang/String;
-	public fun getKey ()Lnet/mamoe/mirai/message/data/MessageKey;
-	public final fun getName ()Ljava/lang/String;
-	public final fun getType ()I
-	public fun hashCode ()I
-	public fun toString ()Ljava/lang/String;
-	public static final fun write$Self (Lnet/mamoe/mirai/message/data/SuperFace;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
-}
-
-public final class net/mamoe/mirai/message/data/SuperFace$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
-	public static final field INSTANCE Lnet/mamoe/mirai/message/data/SuperFace$$serializer;
-	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
-	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
-	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lnet/mamoe/mirai/message/data/SuperFace;
-	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
-	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lnet/mamoe/mirai/message/data/SuperFace;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
-}
-
-public final class net/mamoe/mirai/message/data/SuperFace$Key : net/mamoe/mirai/message/data/AbstractPolymorphicMessageKey {
-	public final fun from (Lnet/mamoe/mirai/message/data/Face;)Lnet/mamoe/mirai/message/data/SuperFace;
-	public final fun fromOrNull (Lnet/mamoe/mirai/message/data/Face;)Lnet/mamoe/mirai/message/data/SuperFace;
-	public final fun serializer ()Lkotlinx/serialization/KSerializer;
-}
-
-public final class net/mamoe/mirai/message/data/SuperFaceKt {
-	public static final synthetic fun toFace (Lnet/mamoe/mirai/message/data/SuperFace;)Lnet/mamoe/mirai/message/data/Face;
-	public static final synthetic fun toSuperFace (Lnet/mamoe/mirai/message/data/Face;)Lnet/mamoe/mirai/message/data/SuperFace;
-	public static final synthetic fun toSuperFaceOrNull (Lnet/mamoe/mirai/message/data/Face;)Lnet/mamoe/mirai/message/data/SuperFace;
 }
 
 public abstract interface class net/mamoe/mirai/message/data/UnsupportedMessage : net/mamoe/mirai/message/data/MessageContent {
@@ -5547,12 +5977,14 @@ public class net/mamoe/mirai/message/data/Voice : net/mamoe/mirai/message/data/P
 	public synthetic fun <init> (ILjava/lang/String;[BJILjava/lang/String;Ljava/lang/String;Lkotlinx/serialization/internal/SerializationConstructorMarker;)V
 	public synthetic fun <init> (Ljava/lang/String;[BJILjava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public fun contentToString ()Ljava/lang/String;
+	public fun equals (Ljava/lang/Object;)Z
 	public static final fun fromAudio (Lnet/mamoe/mirai/message/data/Audio;)Lnet/mamoe/mirai/message/data/Voice;
 	public fun getFileName ()Ljava/lang/String;
 	public fun getFileSize ()J
 	public fun getMd5 ()[B
 	public fun getUrl ()Ljava/lang/String;
 	public final fun get_codec ()I
+	public fun hashCode ()I
 	public final fun toAudio ()Lnet/mamoe/mirai/message/data/Audio;
 	public fun toString ()Ljava/lang/String;
 	public static final fun write$Self (Lnet/mamoe/mirai/message/data/Voice;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
@@ -5590,10 +6022,6 @@ public final class net/mamoe/mirai/message/data/XmlMessageBuilder$ItemBuilder {
 }
 
 public final class net/mamoe/mirai/message/data/visitor/MessageVisitorKt {
-}
-
-public final class net/mamoe/mirai/network/BotAuthorizationException : net/mamoe/mirai/network/LoginFailedException {
-	public final fun getAuthorization ()Lnet/mamoe/mirai/auth/BotAuthorization;
 }
 
 public abstract class net/mamoe/mirai/network/CustomLoginFailedException : net/mamoe/mirai/network/LoginFailedException {
@@ -5657,20 +6085,6 @@ public final class net/mamoe/mirai/network/UnsupportedSmsLoginException : net/ma
 }
 
 public final class net/mamoe/mirai/network/WrongPasswordException : net/mamoe/mirai/network/LoginFailedException {
-}
-
-public abstract interface class net/mamoe/mirai/spi/AudioToSilkService : net/mamoe/mirai/spi/BaseService {
-	public static final field Companion Lnet/mamoe/mirai/spi/AudioToSilkService$Companion;
-	public abstract fun convert (Lnet/mamoe/mirai/utils/ExternalResource;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
-	public static fun getInstance ()Lnet/mamoe/mirai/spi/AudioToSilkService;
-}
-
-public final class net/mamoe/mirai/spi/AudioToSilkService$Companion {
-	public final fun getInstance ()Lnet/mamoe/mirai/spi/AudioToSilkService;
-}
-
-public abstract interface class net/mamoe/mirai/spi/BaseService {
-	public fun getPriority ()I
 }
 
 public abstract class net/mamoe/mirai/utils/AbstractBotConfiguration {
@@ -5819,17 +6233,14 @@ public final class net/mamoe/mirai/utils/BotConfiguration$MiraiProtocol : java/l
 	public static final field ANDROID_WATCH Lnet/mamoe/mirai/utils/BotConfiguration$MiraiProtocol;
 	public static final field IPAD Lnet/mamoe/mirai/utils/BotConfiguration$MiraiProtocol;
 	public static final field MACOS Lnet/mamoe/mirai/utils/BotConfiguration$MiraiProtocol;
-	public final fun isNudgeSupported ()Z
-	public final fun isQRLoginSupported ()Z
 	public static fun valueOf (Ljava/lang/String;)Lnet/mamoe/mirai/utils/BotConfiguration$MiraiProtocol;
 	public static fun values ()[Lnet/mamoe/mirai/utils/BotConfiguration$MiraiProtocol;
 }
 
 public final class net/mamoe/mirai/utils/DeviceInfo {
 	public static final field Companion Lnet/mamoe/mirai/utils/DeviceInfo$Companion;
+	public synthetic fun <init> (I[B[B[B[B[B[B[B[B[B[B[BLnet/mamoe/mirai/utils/DeviceInfo$Version;[B[B[B[B[B[BLjava/lang/String;[BLkotlinx/serialization/internal/SerializationConstructorMarker;)V
 	public fun <init> ([B[B[B[B[B[B[B[B[B[B[BLnet/mamoe/mirai/utils/DeviceInfo$Version;[B[B[B[B[B[BLjava/lang/String;[B)V
-	public fun <init> ([B[B[B[B[B[B[B[B[B[B[BLnet/mamoe/mirai/utils/DeviceInfo$Version;[B[B[B[B[B[BLjava/lang/String;[B[B)V
-	public static final fun deserializeFromString (Ljava/lang/String;)Lnet/mamoe/mirai/utils/DeviceInfo;
 	public fun equals (Ljava/lang/Object;)Z
 	public static final fun from (Ljava/io/File;)Lnet/mamoe/mirai/utils/DeviceInfo;
 	public static final fun from (Ljava/io/File;Lkotlinx/serialization/json/Json;)Lnet/mamoe/mirai/utils/DeviceInfo;
@@ -5859,26 +6270,26 @@ public final class net/mamoe/mirai/utils/DeviceInfo {
 	public fun hashCode ()I
 	public static final fun random ()Lnet/mamoe/mirai/utils/DeviceInfo;
 	public static final fun random (Lkotlin/random/Random;)Lnet/mamoe/mirai/utils/DeviceInfo;
-	public static final fun serializeToString (Lnet/mamoe/mirai/utils/DeviceInfo;)Ljava/lang/String;
+	public static final fun write$Self (Lnet/mamoe/mirai/utils/DeviceInfo;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
-public final class net/mamoe/mirai/utils/DeviceInfo$$serializer : kotlinx/serialization/KSerializer {
+public final class net/mamoe/mirai/utils/DeviceInfo$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
 	public static final field INSTANCE Lnet/mamoe/mirai/utils/DeviceInfo$$serializer;
+	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
 	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
 	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lnet/mamoe/mirai/utils/DeviceInfo;
 	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lnet/mamoe/mirai/utils/DeviceInfo;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class net/mamoe/mirai/utils/DeviceInfo$Companion {
-	public final fun deserializeFromString (Ljava/lang/String;)Lnet/mamoe/mirai/utils/DeviceInfo;
 	public final fun from (Ljava/io/File;)Lnet/mamoe/mirai/utils/DeviceInfo;
 	public final fun from (Ljava/io/File;Lkotlinx/serialization/json/Json;)Lnet/mamoe/mirai/utils/DeviceInfo;
 	public static synthetic fun from$default (Lnet/mamoe/mirai/utils/DeviceInfo$Companion;Ljava/io/File;Lkotlinx/serialization/json/Json;ILjava/lang/Object;)Lnet/mamoe/mirai/utils/DeviceInfo;
 	public final fun random ()Lnet/mamoe/mirai/utils/DeviceInfo;
 	public final fun random (Lkotlin/random/Random;)Lnet/mamoe/mirai/utils/DeviceInfo;
-	public final fun serializeToString (Lnet/mamoe/mirai/utils/DeviceInfo;)Ljava/lang/String;
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
@@ -5912,65 +6323,8 @@ public final class net/mamoe/mirai/utils/DeviceInfo$Version$Companion {
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
-public final class net/mamoe/mirai/utils/DeviceInfoBuilder {
-	public static final field Companion Lnet/mamoe/mirai/utils/DeviceInfoBuilder$Companion;
-	public fun <init> ()V
-	public final fun androidId (Ljava/lang/String;)Lnet/mamoe/mirai/utils/DeviceInfoBuilder;
-	public final fun androidId ([B)Lnet/mamoe/mirai/utils/DeviceInfoBuilder;
-	public final fun apn (Ljava/lang/String;)Lnet/mamoe/mirai/utils/DeviceInfoBuilder;
-	public final fun apn ([B)Lnet/mamoe/mirai/utils/DeviceInfoBuilder;
-	public final fun baseBand (Ljava/lang/String;)Lnet/mamoe/mirai/utils/DeviceInfoBuilder;
-	public final fun baseBand ([B)Lnet/mamoe/mirai/utils/DeviceInfoBuilder;
-	public final fun board (Ljava/lang/String;)Lnet/mamoe/mirai/utils/DeviceInfoBuilder;
-	public final fun board ([B)Lnet/mamoe/mirai/utils/DeviceInfoBuilder;
-	public final fun bootId (Ljava/lang/String;)Lnet/mamoe/mirai/utils/DeviceInfoBuilder;
-	public final fun bootId ([B)Lnet/mamoe/mirai/utils/DeviceInfoBuilder;
-	public final fun bootloader (Ljava/lang/String;)Lnet/mamoe/mirai/utils/DeviceInfoBuilder;
-	public final fun bootloader ([B)Lnet/mamoe/mirai/utils/DeviceInfoBuilder;
-	public final fun brand (Ljava/lang/String;)Lnet/mamoe/mirai/utils/DeviceInfoBuilder;
-	public final fun brand ([B)Lnet/mamoe/mirai/utils/DeviceInfoBuilder;
-	public final fun build ()Lnet/mamoe/mirai/utils/DeviceInfo;
-	public final fun device (Ljava/lang/String;)Lnet/mamoe/mirai/utils/DeviceInfoBuilder;
-	public final fun device ([B)Lnet/mamoe/mirai/utils/DeviceInfoBuilder;
-	public final fun display (Ljava/lang/String;)Lnet/mamoe/mirai/utils/DeviceInfoBuilder;
-	public final fun display ([B)Lnet/mamoe/mirai/utils/DeviceInfoBuilder;
-	public final fun fingerprint (Ljava/lang/String;)Lnet/mamoe/mirai/utils/DeviceInfoBuilder;
-	public final fun fingerprint ([B)Lnet/mamoe/mirai/utils/DeviceInfoBuilder;
-	public static final fun fromPrototype (Lnet/mamoe/mirai/utils/DeviceInfo;)Lnet/mamoe/mirai/utils/DeviceInfoBuilder;
-	public static final fun fromRandom ()Lnet/mamoe/mirai/utils/DeviceInfoBuilder;
-	public static final fun fromRandom (Lkotlin/random/Random;)Lnet/mamoe/mirai/utils/DeviceInfoBuilder;
-	public final fun imei (Ljava/lang/String;)Lnet/mamoe/mirai/utils/DeviceInfoBuilder;
-	public final fun imsiMd5 (Ljava/lang/String;)Lnet/mamoe/mirai/utils/DeviceInfoBuilder;
-	public final fun imsiMd5 ([B)Lnet/mamoe/mirai/utils/DeviceInfoBuilder;
-	public final fun macAddress (Ljava/lang/String;)Lnet/mamoe/mirai/utils/DeviceInfoBuilder;
-	public final fun macAddress ([B)Lnet/mamoe/mirai/utils/DeviceInfoBuilder;
-	public final fun model (Ljava/lang/String;)Lnet/mamoe/mirai/utils/DeviceInfoBuilder;
-	public final fun model ([B)Lnet/mamoe/mirai/utils/DeviceInfoBuilder;
-	public final fun osType (Ljava/lang/String;)Lnet/mamoe/mirai/utils/DeviceInfoBuilder;
-	public final fun osType ([B)Lnet/mamoe/mirai/utils/DeviceInfoBuilder;
-	public final fun procVersion (Ljava/lang/String;)Lnet/mamoe/mirai/utils/DeviceInfoBuilder;
-	public final fun procVersion ([B)Lnet/mamoe/mirai/utils/DeviceInfoBuilder;
-	public final fun product (Ljava/lang/String;)Lnet/mamoe/mirai/utils/DeviceInfoBuilder;
-	public final fun product ([B)Lnet/mamoe/mirai/utils/DeviceInfoBuilder;
-	public final fun simInfo (Ljava/lang/String;)Lnet/mamoe/mirai/utils/DeviceInfoBuilder;
-	public final fun simInfo ([B)Lnet/mamoe/mirai/utils/DeviceInfoBuilder;
-	public final fun version (Lnet/mamoe/mirai/utils/DeviceInfo$Version;)Lnet/mamoe/mirai/utils/DeviceInfoBuilder;
-	public final fun wifiBSSID (Ljava/lang/String;)Lnet/mamoe/mirai/utils/DeviceInfoBuilder;
-	public final fun wifiBSSID ([B)Lnet/mamoe/mirai/utils/DeviceInfoBuilder;
-	public final fun wifiSSID (Ljava/lang/String;)Lnet/mamoe/mirai/utils/DeviceInfoBuilder;
-	public final fun wifiSSID ([B)Lnet/mamoe/mirai/utils/DeviceInfoBuilder;
-}
-
-public final class net/mamoe/mirai/utils/DeviceInfoBuilder$Companion {
-	public final fun fromPrototype (Lnet/mamoe/mirai/utils/DeviceInfo;)Lnet/mamoe/mirai/utils/DeviceInfoBuilder;
-	public final fun fromRandom ()Lnet/mamoe/mirai/utils/DeviceInfoBuilder;
-	public final fun fromRandom (Lkotlin/random/Random;)Lnet/mamoe/mirai/utils/DeviceInfoBuilder;
-	public static synthetic fun fromRandom$default (Lnet/mamoe/mirai/utils/DeviceInfoBuilder$Companion;Lkotlin/random/Random;ILjava/lang/Object;)Lnet/mamoe/mirai/utils/DeviceInfoBuilder;
-}
-
 public final class net/mamoe/mirai/utils/DeviceInfoKt {
 	public static final fun generateDeviceInfoData (Lnet/mamoe/mirai/utils/DeviceInfo;)[B
-	public static final synthetic fun serializeToString (Lnet/mamoe/mirai/utils/DeviceInfo;)Ljava/lang/String;
 }
 
 public abstract interface class net/mamoe/mirai/utils/DeviceVerificationRequests {
@@ -6199,9 +6553,6 @@ public abstract interface annotation class net/mamoe/mirai/utils/MiraiExperiment
 
 public abstract interface annotation class net/mamoe/mirai/utils/MiraiInternalApi : java/lang/annotation/Annotation {
 	public abstract fun message ()Ljava/lang/String;
-}
-
-public abstract interface annotation class net/mamoe/mirai/utils/MiraiInternalFile : java/lang/annotation/Annotation {
 }
 
 public abstract interface class net/mamoe/mirai/utils/MiraiLogger {
